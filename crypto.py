@@ -16,8 +16,33 @@ st.title("📈 Crypto Price Prediction App")
 # Inputs
 currency = st.selectbox("Currency", currencies)
 
-year = st.number_input("Year", 2020, 2030, 2024)
-month = st.number_input("Month", 1, 12, 6)
+year = st.number_input(
+    "Year",
+    min_value=2014,
+    max_value=2021,
+    value=2021
+)
+months = {
+    "January": 1,
+    "February": 2,
+    "March": 3,
+    "April": 4,
+    "May": 5,
+    "June": 6,
+    "July": 7,
+    "August": 8,
+    "September": 9,
+    "October": 10,
+    "November": 11,
+    "December": 12
+}
+
+selected_month = st.selectbox(
+    "Select Month",
+    list(months.keys())
+)
+
+month = months[selected_month]
 
 open_price = st.number_input("24h Open (USD)", min_value=0.0)
 high_price = st.number_input("24h High (USD)", min_value=0.0)
